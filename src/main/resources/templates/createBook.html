@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteka Online</title>
+</head>
+<body>
+<form th:action="@{/book/create}" method="POST" th:object="${book}">
+    <table>
+        <tr><td></td><td><input type="hidden" id="id" name="id"/></td></tr>
+        <tr><td>Tytuł:</td><td><input type="text" id="title" name="title"/></td></tr>
+        <tr><td>Autor:</td><td><input type="text" id="author" name="author"/></td></tr>
+        <tr><td>Kategoria:</td><td><input type="text" id="category" name="category"/></td></tr>
+
+        <tr><td></td><td> <button type="submit">Utwórz</button></td></tr>
+    </table>
+</form>
+
+</body>
+</html>
