@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>BIBLIOTEKA ONLINE</title>
+</head>
+<body>
+Książki w kategorii <span th:text="${category}"/>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Tytuł</th>
+        <th>Autor</th>
+        <th>Kategoria</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td><span th:text="${book.id}"/></td>
+        <td><span th:text="${book.title}"/></td>
+        <td><span th:text="${book.author}"/></td>
+        <td><span th:text="${book.category}"/></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

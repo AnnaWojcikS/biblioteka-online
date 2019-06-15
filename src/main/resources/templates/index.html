@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Biblioteka Online</title>
 </head>
 <body>
-Witamy w bibliotece online!
+Witamy w bibliotece online! <span th:text="${todayDate}"/>
+<ul>
+    <li><a th:href="@{/book/get/fantastyka}">Fantastyka</a></li>
+    <li><a th:href="@{/book/get/historyczne}">Historyczne</a></li>
+</ul>
+<a th:href="@{/book/create}">Utwórz nową książkę</a>
 </body>
 </html>
