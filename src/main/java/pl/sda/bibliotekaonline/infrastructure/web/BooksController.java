@@ -1,11 +1,9 @@
 package pl.sda.bibliotekaonline.infrastructure.web;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.sda.bibliotekaonline.domain.BookFinder;
 import pl.sda.bibliotekaonline.domain.BookService;
@@ -38,12 +36,24 @@ class BooksController {
         return modelAndView;
     }
     @PostMapping("/create")
-    String createBook(BookDto book){
-        bookService.create(book);
+    String createBook(@ModelAttribute BookDto book){
+        bookService.createOrUpdate(book);
         return "redirect:/";
     }
 
+    @GetMapping("/delete")
+    String deleteBook(@RequestParam Long id) {
+        bookService.delete(id);
 
+        return "redirect:/";
+    }
 
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/edit")
+    ModelAndView editBook(@RequestParam Long id) {
+        ModelAndView modelAndView = new ModelAndView("createBook.html");
+        modelAndView.addObject("book", bookFinder.findById(id));
+        return modelAndView;
+    }
 
 }

@@ -26,4 +26,9 @@ public class BookFinder {
     }
 
 
+    public BookDto findById(Long id) {
+        return bookRepository.findById(id)
+                .map(Book::toDto)
+                .orElseThrow(()-> new IllegalStateException("Nie istnieje taka książka"));
+    }
 }

@@ -16,12 +16,17 @@ public class BookService {
 
     private final BookRepository bookRepository;
 
-    public void create(BookDto dto){
+    public void createOrUpdate(BookDto dto){
         Book book = Book.builder()
+                .id(dto.getId())
                 .title(dto.getTitle())
                 .author(dto.getAuthor())
                 .category(dto.getCategory())
                 .build();
         bookRepository.save(book);
+    }
+
+    public void delete(Long bookId) {
+        bookRepository.deleteById(bookId);
     }
 }

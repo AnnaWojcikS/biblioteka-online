@@ -22,6 +22,8 @@ Książki w kategorii <span th:text="${category}"/>
         <td><span th:text="${book.title}"/></td>
         <td><span th:text="${book.author}"/></td>
         <td><span th:text="${book.category}"/></td>
+        <td><a th:href="@{../edit?id=} + ${book.id}">Edytuj</a></td>
+        <td><a th:href="@{../delete?id=} + ${book.id}">Usuń</a></td>
     </tr>
     </tbody>
 </table>

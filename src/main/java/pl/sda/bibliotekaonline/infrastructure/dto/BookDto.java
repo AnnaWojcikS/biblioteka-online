@@ -1,15 +1,13 @@
 package pl.sda.bibliotekaonline.infrastructure.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 /**
  * Created by A.Wójcik on 15 06 2019.
  */
 
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
