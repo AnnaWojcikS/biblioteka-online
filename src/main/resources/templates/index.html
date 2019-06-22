@@ -27,5 +27,8 @@ Witamy w bibliotece online! <span th:text="${todayDate}"/>
 <div th:fragment="login" class="logout" sec:authorize="isAnonymous()">
     <a th:href="@{/login}">Zaloguj się </a>
 </div>
+<div th:fragment="signup" class="logout" sec:authorize="isAnonymous()">
+    <a th:href="@{/signup}">Rejestracja</a>
+</div>
 </body>
 </html>

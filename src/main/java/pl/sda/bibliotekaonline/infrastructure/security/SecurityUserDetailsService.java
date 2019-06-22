@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import pl.sda.bibliotekaonline.infrastructure.entity.User;
 import pl.sda.bibliotekaonline.infrastructure.repository.UserRepository;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,7 +35,8 @@ public class SecurityUserDetailsService implements UserDetailsService {
     }
 
     private List<GrantedAuthority> mapRoles(User user) {
-        return user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getRole()))
-                .collect(Collectors.toList());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getUserRole().name());
+        List<GrantedAuthority> authorities = new ArrayList<>(Arrays.asList(authority));
+        return authorities;
     }
 }

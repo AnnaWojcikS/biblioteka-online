@@ -4,9 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pl.sda.bibliotekaonline.infrastructure.dto.UserDto;
+import pl.sda.bibliotekaonline.infrastructure.type.UserRole;
 
 import javax.persistence.*;
-import java.util.Set;
 
 /**
  * Created by A.Wójcik on 16 06 2019.
@@ -26,7 +27,15 @@ public class User {
     @Column(unique = true, length = 32)
     private String login;
     private String password;
+    @Enumerated(EnumType.STRING)
+    private UserRole userRole;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<UserRole> roles;
+    public UserDto toDto(){
+        return UserDto.builder()
+                .id(id)
+                .login(login)
+                .password(password)
+                .userRole(userRole)
+                .build();
+    }
 }
