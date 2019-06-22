@@ -22,25 +22,29 @@ class BooksController {
     private final BookService bookService;
 
     @GetMapping("/get/{category}")
-    ModelAndView getBooks(@PathVariable String category){
+    ModelAndView getBooks(@PathVariable String category) {
         ModelAndView modelAndView = new ModelAndView("books.html");
         modelAndView.addObject("category", category);
         modelAndView.addObject("books", bookFinder.findByCategory(category));
         return modelAndView;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/create")
     ModelAndView createBookView() {
         ModelAndView modelAndView = new ModelAndView("createBook.html");
         modelAndView.addObject("book", new BookDto());
         return modelAndView;
     }
+
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")
-    String createBook(@ModelAttribute BookDto book){
+    String createBook(@ModelAttribute BookDto book) {
         bookService.createOrUpdate(book);
         return "redirect:/";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/delete")
     String deleteBook(@RequestParam Long id) {
         bookService.delete(id);
@@ -48,7 +52,7 @@ class BooksController {
         return "redirect:/";
     }
 
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/edit")
     ModelAndView editBook(@RequestParam Long id) {
         ModelAndView modelAndView = new ModelAndView("createBook.html");

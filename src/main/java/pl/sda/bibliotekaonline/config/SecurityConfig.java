@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/*").permitAll().and()
-                .authorizeRequests().antMatchers("/book/create").hasRole("USER")
+                .authorizeRequests().antMatchers("/book/delete", "/book/create", "/book/edit").hasRole("ADMIN")
                 .and().formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/authenticate")

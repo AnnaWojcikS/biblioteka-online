@@ -11,7 +11,7 @@ public class PasswordEncoder {
     @Test
     public void encodePassword() {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        String encryptedPass = bCryptPasswordEncoder.encode("pass");
+        String encryptedPass = bCryptPasswordEncoder.encode("adm");
         System.out.println(encryptedPass);
     }
 }
