@@ -34,7 +34,7 @@ public class SecurityUserDetailsService implements UserDetailsService {
     }
 
     private List<GrantedAuthority> mapRoles(User user) {
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getUserRole().name());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + user.getUserRole().name());
         List<GrantedAuthority> authorities = new ArrayList<>(Arrays.asList(authority));
         return authorities;
     }
