@@ -2,10 +2,7 @@ package pl.sda.bibliotekaonline.infrastructure.web;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.sda.bibliotekaonline.domain.UserService;
 import pl.sda.bibliotekaonline.infrastructure.dto.UserDto;
@@ -20,18 +17,19 @@ import java.util.stream.Collectors;
  */
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/user")
 public class SignUpController {
 
     private final UserService userService;
 
     @GetMapping("/signup")
-    ModelAndView signUpPage(@RequestParam(required = false) String error) {
+    ModelAndView signUpView() {
         ModelAndView modelAndView = new ModelAndView("signUpPage.html");
-        modelAndView.addObject("error", error);
         modelAndView.addObject("user", new UserDto());
         modelAndView.addObject("userRoles", Arrays.stream(UserRole.values())
                 .map(role -> new UserRoleDto(role, role.getLabel())).collect(Collectors.toList()));
         return modelAndView;
+
     }
     @PostMapping("/signup")
     String signUpPage(@ModelAttribute UserDto user) {

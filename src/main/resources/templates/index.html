@@ -10,7 +10,7 @@ Witamy w bibliotece online! <span th:text="${todayDate}"/>
     <li><a th:href="@{/book/get/fantastyka}">Fantastyka</a></li>
     <li><a th:href="@{/book/get/historyczne}">Historyczne</a></li>
 </ul>
-<!--<div sec:authorize="hasRole('USER')">-->
+<div> <!--sec:authorize="hasRole('USER')">-->
     <a th:href="@{/book/create}">Dodaj nową książkę</a>
 </div>
 <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
@@ -27,8 +27,8 @@ Witamy w bibliotece online! <span th:text="${todayDate}"/>
 <div th:fragment="login" class="logout" sec:authorize="isAnonymous()">
     <a th:href="@{/login}">Zaloguj się </a>
 </div>
-<div th:fragment="signup" class="logout" sec:authorize="isAnonymous()">
-    <a th:href="@{/signup}">Rejestracja</a>
+<div th:fragment="user/signup" class="logout" sec:authorize="isAnonymous()">
+    <a th:href="@{/user/signup}">Rejestracja</a>
 </div>
 </body>
 </html>

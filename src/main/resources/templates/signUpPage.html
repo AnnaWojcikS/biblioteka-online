@@ -8,8 +8,8 @@
 <form th:action="@{/user/signup}" method="POST" th:object="${user}">
     <table>
         <tr><td></td><td><input type="hidden" id="id" name="id" th:value="${user.id}"/></td></tr>
-        <tr><td>Login:</td><td><input type="text" id="username" name="username" th:value="${user.login}"/></td></tr>
-        <tr><td>Hasło:</td><td><input type="text" id="password" name="password" th:value="${user.password}"/></td></tr>
+        <tr><td>Login:</td><td><input type="text" id="login" name="login" th:value="${user.login}"/></td></tr>
+        <tr><td>Hasło:</td><td><input type="password" id="password" name="password" th:value="${user.password}"/></td></tr>
         <tr><td>Rola:</td><td><select th:field="*{userRole}">
             <option th:each="i : ${userRoles}" th:value="${i.id}" th:text="${i.label}"></option>
         </select></td></tr>

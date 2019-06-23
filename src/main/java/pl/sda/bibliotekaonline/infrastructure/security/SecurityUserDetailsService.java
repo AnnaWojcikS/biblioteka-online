@@ -13,7 +13,6 @@ import pl.sda.bibliotekaonline.infrastructure.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by A.Wójcik on 16 06 2019.
