@@ -29,7 +29,7 @@ class BooksController {
         return modelAndView;
     }
     @GetMapping("/get/title/{title}")
-    ModelAndView getBooksByTitle(@PathVariable String title) {
+    ModelAndView getBooksByTitle(@RequestParam String title) {
         ModelAndView modelAndView = new ModelAndView("books.html");
         modelAndView.addObject("title", title);
         modelAndView.addObject("books", bookFinder.findByTitle(title));
