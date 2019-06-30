@@ -21,11 +21,18 @@ class BooksController {
     private final BookFinder bookFinder;
     private final BookService bookService;
 
-    @GetMapping("/get/{category}")
+    @GetMapping("/get/category/{category}")
     ModelAndView getBooks(@PathVariable String category) {
         ModelAndView modelAndView = new ModelAndView("books.html");
         modelAndView.addObject("category", category);
         modelAndView.addObject("books", bookFinder.findByCategory(category));
+        return modelAndView;
+    }
+    @GetMapping("/get/title/{title}")
+    ModelAndView getBooksByTitle(@PathVariable String title) {
+        ModelAndView modelAndView = new ModelAndView("books.html");
+        modelAndView.addObject("title", title);
+        modelAndView.addObject("books", bookFinder.findByTitle(title));
         return modelAndView;
     }
 

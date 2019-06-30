@@ -31,4 +31,8 @@ public class BookFinder {
                 .map(Book::toDto)
                 .orElseThrow(()-> new IllegalStateException("Nie istnieje taka książka"));
     }
+
+    public List<BookDto> findByTitle(String title) {
+        return bookRepository.findByTitle(title).stream().map(Book::toDto).collect(Collectors.toList());
+    }
 }

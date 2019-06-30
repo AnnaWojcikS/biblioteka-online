@@ -13,6 +13,7 @@ import java.util.List;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findByCategory(String searchedCategory);
+    List<Book> findByTitle(String searchedTitle);
 
 
 }

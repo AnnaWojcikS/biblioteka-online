@@ -5,11 +5,25 @@
     <title>Biblioteka Online</title>
 </head>
 <body>
-Witamy w bibliotece online! <span th:text="${todayDate}"/>
+<h3>Witamy w bibliotece online! <span th:text="${todayDate}"/> </h3>
 <ul>
-    <li><a th:href="@{/book/get/fantastyka}">Fantastyka</a></li>
-    <li><a th:href="@{/book/get/historyczne}">Historyczne</a></li>
+    <li><a th:href="@{/book/get/category/fantastyka}">Fantastyka</a></li>
+    <li><a th:href="@{/book/get/category/historyczne}">Historyczne</a></li>
+    <li><a th:href="@{/book/get/category/dla dzieci}">Dla dzieci</a></li>
+    <li><a th:href="@{/book/get/category/informatyka}">Informatyka</a></li>
+    <li><a th:href="@{/book/get/category/kryminał}">Kryminał</a></li>
+    <li><a th:href="@{/book/get/category/literatura piękna}">Literatura piękna</a></li>
+
 </ul>
+<form th:action="@{/book/get/title/{title}}" method="GET">
+    <table>
+        <tr><td>Tytuł:</td><td><input type="text" id="title" name="title"/></td></tr>
+        <tr><td></td><td> <button type="submit">Szukaj</button></td></tr>
+    </table>
+
+</form>
+
+
 <div sec:authorize="hasRole('ADMIN')">
     <a th:href="@{/book/create}">Dodaj nową książkę</a>
 </div>
@@ -20,7 +34,7 @@ Witamy w bibliotece online! <span th:text="${todayDate}"/>
 
     <div>
         <form th:action="@{/logout}" method="POST">
-            <input type="submit" value="Logout" />
+            <input type="submit" value="Wyloguj się" />
         </form>
     </div>
 </div>
